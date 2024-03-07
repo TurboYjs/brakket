@@ -7,7 +7,7 @@
     </section>
     <section v-if="!loading && tournamentIsLoaded">
       <h2>{{ tournamentName || 'Unnamed tournament' }}</h2>
-      <h3 v-if="!winnerSide">Enter the results by editing the scores below</h3>
+      <!--      <h3 v-if="!winnerSide">Enter the results by editing the scores below</h3>-->
       <h3 v-if="winnerSide">
         <AirHorn />
         <div class="winner-announcement">

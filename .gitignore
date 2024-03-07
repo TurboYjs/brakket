@@ -240,3 +240,8 @@ $RECYCLE.BIN/
 
 
 # End of https://www.gitignore.io/api/code,node,linux,macos,windows,webstorm,intellij
+/.idea/.gitignore
+/.idea/brakket.iml
+/.idea/modules.xml
+/.idea/inspectionProfiles/Project_Default.xml
+/.idea/vcs.xml

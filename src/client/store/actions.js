@@ -28,6 +28,8 @@ export const actionTypes = {
   STORE_TOURNAMENT_STATE_REMOTELY: "STORE_TOURNAMENT_STATE_REMOTELY",
   UPDATE_ACCESS_NAME: "UPDATE_ACCESS_NAME",
   UPDATE_TOURNAMENT_SCORE: "UPDATE_TOURNAMENT_SCORE",
+  UPDATE_TOURNAMENT_JOIN_NAME: "UPDATE_TOURNAMENT_JOIN_NAME",
+  UPDATE_TOURNAMENT_FOCUSED: "UPDATE_TOURNAMENT_FOCUSED",
 }
 
 export const actions = {
@@ -177,5 +179,13 @@ export const actions = {
   [actionTypes.UPDATE_TOURNAMENT_SCORE]({ commit, state }, payload) {
     state.$socket.emit("tournamentScore", payload)
     commit(mutationTypes.SET_TOURNAMENT_SCORE, payload)
+  },
+  [actionTypes.UPDATE_TOURNAMENT_JOIN_NAME]({ commit, state }, payload) {
+    state.$socket.emit("tournamentJoinName", payload)
+    commit(mutationTypes.SET_TOURNAMENT_JOIN_NAME, payload)
+  },
+  [actionTypes.UPDATE_TOURNAMENT_FOCUSED]({ commit, state }, payload) {
+    state.$socket.emit("tournamentFocused", payload)
+    commit(mutationTypes.SET_TOURNAMENT_FOCUSED, payload)
   },
 }

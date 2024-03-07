@@ -9,6 +9,8 @@ export const mutationTypes = {
   SET_SOCKET: "SET_SOCKET",
   SET_TOURNAMENT_LOADING: "SET_TOURNAMENT_LOADING",
   SET_TOURNAMENT_NAME: "SET_TOURNAMENT_NAME",
+  SET_TOURNAMENT_JOIN_NAME: "SET_TOURNAMENT_JOIN_NAME",
+  SET_TOURNAMENT_FOCUSED: "SET_TOURNAMENT_FOCUSED",
   SET_TOURNAMENT_SCORE: "SET_TOURNAMENT_SCORE",
   SOCKET_CLIENTS: "SOCKET_CLIENTS",
   SOCKET_CONNECT: "SOCKET_CONNECT",
@@ -43,6 +45,20 @@ export const mutations = {
     state.tournament.meta.lastModified = +new Date()
     state.tournament.domain.results[roundIndex][matchIndex][side].score =
       parseInt(score) || 0
+  },
+  [mutationTypes.SET_TOURNAMENT_FOCUSED](state, payload) {
+    const { roundIndex, matchIndex, side, focused } = payload
+
+    // state.tournament.meta.lastModified = +new Date()
+    state.tournament.domain.results[roundIndex][matchIndex][side].focused = focused
+  },
+  [mutationTypes.SET_TOURNAMENT_JOIN_NAME](state, payload) {
+    const { matchIndex, side, name } = payload
+
+    state.tournament.meta.lastModified = +new Date()
+    // state.tournament.domain.results[roundIndex][matchIndex][side].name =
+    //     name
+    state.tournament.domain.participants[state.tournament.domain.seed[matchIndex][side]] = name
   },
   [mutationTypes.SOCKET_CLIENTS](state, payload) {
     state.tournament.transient.clients = payload

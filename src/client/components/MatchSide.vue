@@ -14,8 +14,21 @@
     </div>
     <div
       v-else
-      class="side-name">
-      {{ match[side].name }}
+      class="side-name"
+    >
+      <template v-if="match.roundIndex === 0">
+        <input
+          :style="{
+            width: '-webkit-fill-available',
+            textAlign: 'center'
+          }"
+          :value="match[side].name"
+          @blur=" $emit('name-change',match.roundIndex, match.matchIndex, side, $event.target.value)
+          ">
+      </template>
+      <template v-else>
+        {{ match[side].name }}
+      </template>
     </div>
     <input      
       :disabled="disabled || isSideDisabled(match, side)"

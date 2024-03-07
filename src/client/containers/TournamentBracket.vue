@@ -16,7 +16,10 @@
           side="home"
           @score-change="handleScoreChange"
           @score-blur="handleScoreBlur"
-          @score-focus="handleScoreFocus" />
+          @score-focus="handleScoreFocus"
+          @name-change="handleNameChange"
+          @focused-change="handleFocusedChange"
+        />
         <MatchSide
           :disabled="isSpectator"
           :focus-id="getFocusId(roundIndex, matchIndex)"
@@ -24,7 +27,9 @@
           side="away"
           @score-change="handleScoreChange"
           @score-blur="handleScoreBlur"
-          @score-focus="handleScoreFocus" />
+          @score-focus="handleScoreFocus"
+          @name-change="handleNameChange"
+        />
       </article>
     </article>
   </article>
@@ -68,6 +73,22 @@ export default class BracketView extends Vue {
       matchIndex,
       side,
       score,
+    })
+  }
+  handleNameChange(roundIndex, matchIndex, side, name) {
+    this.$store.dispatch(actionTypes.UPDATE_TOURNAMENT_JOIN_NAME, {
+      roundIndex,
+      matchIndex,
+      side,
+      name,
+    })
+  }
+  handleFocusedChange(roundIndex, matchIndex, side, focused) {
+    this.$store.dispatch(actionTypes.UPDATE_TOURNAMENT_FOCUSED, {
+      roundIndex,
+      matchIndex,
+      side,
+      focused,
     })
   }
 
