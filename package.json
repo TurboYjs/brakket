@@ -1,7 +1,7 @@
 {
   "name": "brakket",
   "description": "Vue.js application for tournament brackets.",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "private": true,
   "scripts": {
     "build": "vue-cli-service build",

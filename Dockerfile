@@ -58,6 +58,6 @@ COPY . .
 
 RUN npm config set registry https://mirrors.cloud.tencent.com/npm/
 
-RUN npm install
+RUN yarn
 EXPOSE 8080
-CMD ["npm", "serve"]
+CMD ["yarn", "serve"]
