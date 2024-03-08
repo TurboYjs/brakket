@@ -50,6 +50,7 @@
 # Dockerfile.prod
 
 FROM node:8-alpine AS base
+RUN apk add g++ make python
 
 # Rebuild the source code only when needed
 FROM base AS builder
