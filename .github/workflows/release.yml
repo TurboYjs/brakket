@@ -13,7 +13,7 @@ jobs:
         with:
           # This will create a directory named `my-repo` and copy the repo contents to it
           # so that you can easily upload it to your remote server
-          path: code-it
+          path: brakket
       - name: Prepare SSH
         run: >
           cd ~ && mkdir .ssh &&
@@ -27,7 +27,7 @@ jobs:
         run: |
           ssh-agent -a $SSH_AUTH_SOCK > /dev/null
           ssh-add - <<< "${{ secrets.PRIVATE_KEY }}"
-          scp -o StrictHostKeyChecking=no -r  code-it root@${{ secrets.IP }}:/var/www/
+          scp -o StrictHostKeyChecking=no -r  brakket root@${{ secrets.IP }}:/var/www/
           ssh -o ServerAliveInterval=3000 -o ServerAliveCountMax=100 root@${{ secrets.IP }} "cd /var/www/brakket/ && docker-compose down && docker-compose build --no-cache && docker-compose up -d"
 #    steps:
 #      - uses: actions/checkout@v1
@@ -37,7 +37,7 @@ jobs:
 #          host: ${{ secrets.IP }}
 #          username: root
 #          password: ${{ secrets.PASSWORD }}
-#          script: cd /var/www/code-it  && docker compose up
+#          script: cd /var/www/brakket  && docker compose up
 #      - name: Setup SSH
 #        run: |
 #          mkdir -p ~/.ssh/
@@ -48,5 +48,5 @@ jobs:
 #          ssh-keyscan -H ${{ secrets.IP }} >> ~/.ssh/known_hosts
 #      - name: copy builds to server
 #        run: |
-#          rsync -vrm   ./* ${{ secrets.USER_IP }}:/var/www/code-it/
-#          ssh ${{ secrets.USER_IP }} "cd /var/www/code-it/ && docker compose up "
+#          rsync -vrm   ./* ${{ secrets.USER_IP }}:/var/www/brakket/
+#          ssh ${{ secrets.USER_IP }} "cd /var/www/brakket/ && docker compose up "
