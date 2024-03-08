@@ -1,7 +1,7 @@
 {
   "name": "brakket",
   "description": "Vue.js application for tournament brackets.",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "private": true,
   "scripts": {
     "build": "vue-cli-service build",
@@ -17,8 +17,7 @@
     "publish": "vue-cli-service electron:build  -w  --mode prod",
     "electron:build": "vue-cli-service electron:build  --mode prod",
     "electron:serve": "vue-cli-service electron:serve -m --mode dev",
-    "postinstall": "electron-builder install-app-deps",
-    "postuninstall": "electron-builder install-app-deps"
+    "electron:install": "electron-builder install-app-deps"
   },
   "engines": {
     "npm": "*",
